@@ -35,13 +35,22 @@ const setUpColor = () => {
 const buttonClickHandler = (buttonIndex) => {
     console.log(buttonIndex, correctButton);
     if (buttonIndex === correctButton) {
-        //setUpColor();
         overlayCorrect.classList.toggle('visible');
+        setTimeout(setRound, 1000);
     } else {
-        //setUpColor();
         overlayWrong.classList.toggle('visible');
+        setTimeout(setRound, 1000);
     }
 };
+
+const hideOverlays = () => {
+    if(overlayCorrect.classList.contains('visible')){
+        overlayCorrect.classList.remove('visible');
+    }
+    if(overlayWrong.classList.contains('visible')){
+        overlayWrong.classList.remove('visible');
+    }
+}
 
 const setGameUp = () => {
     setUpColor();
@@ -50,5 +59,10 @@ const setGameUp = () => {
         button.addEventListener("click", buttonClickHandler.bind(this, index));
     });
 };
+
+const setRound = () => {
+    hideOverlays();
+    setUpColor();
+}
 
 setGameUp();
