@@ -1,6 +1,8 @@
 const buttonList = document.getElementById("color-options");
 const buttons = Array.from(buttonList.querySelectorAll("li"));
 const colorBox = document.getElementById("color-box");
+const overlayCorrect = document.querySelector('#color-box .overlay-correct');
+const overlayWrong = document.querySelector('#color-box .overlay-wrong');
 
 let currentColor = null;
 let correctButton = null;
@@ -20,11 +22,11 @@ const setUpColor = () => {
     currentColor = generateNewColor();
     correctButton = Math.floor(Math.random() * 3);
     buttons.forEach((button, index, buttons) => {
-        if(index === correctButton){
+        if (index === correctButton) {
             button.textContent = `rgb (${currentColor.red}, ${currentColor.green}, ${currentColor.blue})`;
-        }else{
+        } else {
             const rndmColor = generateNewColor();
-            button.textContent = `rgb (${rndmColor.red}, ${rndmColor.green}, ${rndmColor.blue})`
+            button.textContent = `rgb (${rndmColor.red}, ${rndmColor.green}, ${rndmColor.blue})`;
         }
     });
     colorBox.style.backgroundColor = `rgb(${currentColor.red}, ${currentColor.green}, ${currentColor.blue})`;
@@ -32,16 +34,21 @@ const setUpColor = () => {
 
 const buttonClickHandler = (buttonIndex) => {
     console.log(buttonIndex, correctButton);
-    if(buttonIndex === correctButton){
-        console.log("Correct!");
-        setUpColor();
-    }else{
-        console.log("Not correct!");
+    if (buttonIndex === correctButton) {
+        //setUpColor();
+        overlayCorrect.classList.toggle('visible');
+    } else {
+        //setUpColor();
+        overlayWrong.classList.toggle('visible');
     }
-}
+};
 
-setUpColor();
+const setGameUp = () => {
+    setUpColor();
 
-buttons.forEach((button, index, buttons) => {
-    button.addEventListener('click', buttonClickHandler.bind(this, index));
-})
+    buttons.forEach((button, index, buttons) => {
+        button.addEventListener("click", buttonClickHandler.bind(this, index));
+    });
+};
+
+setGameUp();
