@@ -10,58 +10,21 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#main-title, #subtitle{
-    width: fit-content;
-    margin-inline: auto;
-    margin-top: 0.8em;
+h1, h2{
+    text-align: center;
     font-size: 3.5rem;
+    margin: 0.5em;
+    margin-bottom: 0.2em;
 }
 
-#subtitle{
-    font-size: 1.2rem;
-    margin-top: 0.2em;
+h2{
+    font-size: 2.5rem;
 }
 
 main{
     width: 35%;
     margin-inline: auto;
     margin-top: 2em;    
-}
-
-.title{
-    margin-bottom: 0.5em;
-    width: fit-content;
-    margin-inline: auto;
-}
-
-#color-box{
-    width: 100%;
-    height: 15em;
-    background-color: blue;
-    border-radius: 1em;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.25);
-}
-
-.overlay-correct, .overlay-wrong{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    border-radius: 1em;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.overlay-correct.visible{
-    display: flex !important;
-    background-color: green;
-}
-
-.overlay-wrong.visible{
-    display: flex !important;
-    background-color: red;
 }
 
 main ul{
@@ -95,6 +58,49 @@ main ul>li:hover{
 main ul>li.un-hover:hover{
     transform: scale(1);
 }
+
+.subtitle{
+    text-align: center;
+    margin-inline: auto;
+    font-size: 1.2rem;
+    max-width: 75ch;
+}
+
+.color-box{
+    position: relative;
+    height: 15em;
+    border-radius: 1em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+}
+
+.overlay-correct, .overlay-wrong{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    background-color: red;
+    transform: translateX(-50%) scaleX(0);
+    transition: opacity 150ms, transform 150ms;
+}
+
+.overlay-correct.visible{
+    opacity: 1;
+    background-color: green;
+    transform: translateX(0%) scaleX(1);
+}
+
+.overlay-wrong.visible{
+    opacity: 1;
+    background-color: red;
+    transform: translateX(0%) scaleX(1);
+}
+
 
 .right-answer{
     background-color: green !important;

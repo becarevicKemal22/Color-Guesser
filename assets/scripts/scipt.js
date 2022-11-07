@@ -1,8 +1,8 @@
 const buttonList = document.getElementById("color-options");
 const buttons = Array.from(buttonList.querySelectorAll("li"));
-const colorBox = document.getElementById("color-box");
-const overlayCorrect = document.querySelector("#color-box .overlay-correct");
-const overlayWrong = document.querySelector("#color-box .overlay-wrong");
+const colorBox = document.getElementsByClassName("color-box")[0];
+const overlayCorrect = document.querySelector(".color-box .overlay-correct");
+const overlayWrong = document.querySelector(".color-box .overlay-wrong");
 const scoreElement = document.querySelector("main").firstElementChild;
 
 let currentColor = null;
