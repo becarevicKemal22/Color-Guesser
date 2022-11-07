@@ -1,13 +1,19 @@
-const buttons = Array.from(document.getElementById("color-options").querySelectorAll("li"));
+const buttons = Array.from(
+    document.getElementById("color-options").querySelectorAll("li")
+);
 const colorBox = document.getElementsByClassName("color-box")[0];
 const overlayCorrect = document.querySelector(".color-box").firstElementChild;
 const overlayWrong = document.querySelector(".color-box").lastElementChild;
 const scoreElement = document.querySelector("main").firstElementChild;
+const highScoreElement = scoreElement.nextElementSibling;
 
 let currentColor = null;
 let correctButton = null;
 let clickedButtonIndex = null;
 let score = 0;
+let highScore = localStorage.getItem("color_guesser_high_score") ?? 0;
+highScoreElement.textContent = `Highscore: ${highScore}`;
+
 
 const generateNewColor = () => {
     const red = Math.floor(Math.random() * 256);
@@ -24,10 +30,12 @@ const updateBoxColor = () => {
     const color = generateNewColor();
     colorBox.style.backgroundColor = `rgb(${color.red}, ${color.green}, ${color.blue})`;
     return color;
-}
+};
 
 const setButtonTexts = (correctButtonIndex) => {
-    buttons[correctButtonIndex].textContent = `rgb (${currentColor.red}, ${currentColor.green}, ${currentColor.blue})`;
+    buttons[
+        correctButtonIndex
+    ].textContent = `rgb (${currentColor.red}, ${currentColor.green}, ${currentColor.blue})`;
     buttons.forEach((button, index, buttons) => {
         if (index === correctButtonIndex) {
             return;
@@ -35,7 +43,7 @@ const setButtonTexts = (correctButtonIndex) => {
         const rndmColor = generateNewColor();
         button.textContent = `rgb (${rndmColor.red}, ${rndmColor.green}, ${rndmColor.blue})`;
     });
-}
+};
 
 const applyColors = () => {
     currentColor = updateBoxColor();
@@ -43,19 +51,27 @@ const applyColors = () => {
     setButtonTexts(correctButton);
 };
 
-const updateScoreElement = () => {
+const updateScoreElements = () => {
     scoreElement.textContent = `Score: ${score.toString()}`;
+    highScoreElement.textContent = `Highscore: ${highScore.toString()}`;
+};
+
+const highScoreHandler = () => {
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem("color_guesser_high_score", highScore);
+        console.log('New Highscore: ' + toString(localStorage.getItem('color_guesser_high_score')));
+    }
 };
 
 const toggleCorrectButtonHighlight = () => {
     buttons[correctButton].classList.toggle("correct");
     buttons[correctButton].classList.toggle("enlarge1-1");
-}
+};
 
 const toggleButtonHiglights = () => {
     toggleCorrectButtonHighlight();
     if (clickedButtonIndex !== correctButton) {
-        console.log(clickedButtonIndex)
         buttons[clickedButtonIndex].classList.toggle("incorrect");
         buttons[clickedButtonIndex].classList.toggle("un-hover");
     }
@@ -69,12 +85,13 @@ const buttonSelectionHandler = (index) => {
         score++;
         targetTimeout = 1000;
     } else {
+        highScoreHandler();
         overlayWrong.classList.toggle("visible");
         score = 0;
         targetTimeout = 1500;
     }
     toggleButtonHiglights();
-    updateScoreElement();
+    updateScoreElements();
     setTimeout(setRound, targetTimeout);
 };
 
@@ -91,7 +108,10 @@ const setGameUp = () => {
     applyColors();
 
     buttons.forEach((button, index, buttons) => {
-        button.addEventListener("click", buttonSelectionHandler.bind(this, index));
+        button.addEventListener(
+            "click",
+            buttonSelectionHandler.bind(this, index)
+        );
     });
 };
 

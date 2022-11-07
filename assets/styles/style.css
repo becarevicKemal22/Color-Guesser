@@ -10,15 +10,22 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1, h2{
+h1, h2, h3{
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin: 0.5em;
     margin-bottom: 0.2em;
 }
 
 h2{
     font-size: 2.5rem;
+    margin-bottom: 0em;
+}
+
+h3{
+    margin-top: 0em;
+    margin-bottom: 0.35em;
+    font-size: 1.5rem;
 }
 
 main{
@@ -29,7 +36,7 @@ main{
 
 main ul{
     list-style-type: none;
-    margin-top: 2em;
+    margin-top: 1.5em;
     display: flex;
     flex-direction: column;
     gap: 1.5em;
