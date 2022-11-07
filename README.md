@@ -4,6 +4,7 @@ Simple web game for guessing RGB values of a shown color.
 * [General info](#general-info)
 * [Demo](#Demo)
 * [Technologies](#technologies)
+* [Features](#Features)
 
 # General Info
 This is my first finished project regarding web development. It was a practice project to apply the skills that I have learned thus far and try to make a functional game with them. 
@@ -15,6 +16,14 @@ A working demo is hosted on: https://becarevickemal22.github.io/Color-Guesser/
 * HTML
 * CSS
 * Vanilla JS
+
+# Features
+## Current Features
+* Random color generation
+* Score system
+## Ideas for additional features
+* Highscore system on local storage or a database.
+* System where the player loses lives before it is game over.
 
 # Screenshots
 
