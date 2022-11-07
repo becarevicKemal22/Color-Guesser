@@ -5,6 +5,7 @@ Simple web game for guessing RGB values of a shown color.
 * [Demo](#Demo)
 * [Technologies](#technologies)
 * [Features](#Features)
+* [Screenshots](#Screenshots)
 
 # General Info
 This is my first finished project regarding web development. It was a practice project to apply the skills that I have learned thus far and try to make a functional game with them. 
