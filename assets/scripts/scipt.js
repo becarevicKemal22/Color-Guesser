@@ -1,8 +1,8 @@
 const buttonList = document.getElementById("color-options");
 const buttons = Array.from(buttonList.querySelectorAll("li"));
 const colorBox = document.getElementsByClassName("color-box")[0];
-const overlayCorrect = document.querySelector(".color-box .overlay-correct");
-const overlayWrong = document.querySelector(".color-box .overlay-wrong");
+const overlayCorrect = document.querySelector(".color-box").firstElementChild;
+const overlayWrong = document.querySelector(".color-box").lastElementChild;
 const scoreElement = document.querySelector("main").firstElementChild;
 
 let currentColor = null;
@@ -39,28 +39,28 @@ const updateScore = () => {
 };
 
 const colorButtons = (clickedButtonIndex) => {
-    buttons[correctButton].classList.add('right-answer');
-    buttons[correctButton].classList.add('enlarge1-1');
-    if(clickedButtonIndex !== correctButton){
-        buttons[clickedButtonIndex].classList.add('wrong-answer');
-        buttons[clickedButtonIndex].classList.add('un-hover');
+    buttons[correctButton].classList.add("correct");
+    buttons[correctButton].classList.add("enlarge1-1");
+    if (clickedButtonIndex !== correctButton) {
+        buttons[clickedButtonIndex].classList.add("incorrect");
+        buttons[clickedButtonIndex].classList.add("un-hover");
     }
-}
+};
 
 const unColorButtons = (clickedButtonIndex) => {
-    buttons[correctButton].classList.remove('right-answer');
-    buttons[correctButton].classList.remove('enlarge1-1');
+    buttons[correctButton].classList.remove("correct");
+    buttons[correctButton].classList.remove("enlarge1-1");
     buttons.forEach((button, index, buttons) => {
-        if(button.classList.contains('wrong-answer')){
-            button.classList.remove('wrong-answer');
-            button.classList.remove('un-hover');
+        if (button.classList.contains("incorrect")) {
+            button.classList.remove("incorrect");
+            button.classList.remove("un-hover");
         }
-    })
-}
+    });
+};
 
 const selectionHandler = (buttonIndex) => {
     let targetTimeout = null;
-    buttons[correctButton].classList.add('rightAnswer');
+    buttons[correctButton].classList.add("correct");
     if (buttonIndex === correctButton) {
         overlayCorrect.classList.toggle("visible");
         score++;
