@@ -25,7 +25,13 @@ body{
 main{
     width: 35%;
     margin-inline: auto;
-    margin-top: 3.5em;    
+    margin-top: 2em;    
+}
+
+.title{
+    margin-bottom: 0.5em;
+    width: fit-content;
+    margin-inline: auto;
 }
 
 #color-box{
@@ -60,7 +66,7 @@ main{
 
 main ul{
     list-style-type: none;
-    margin-top: 3.5em;
+    margin-top: 2em;
     display: flex;
     flex-direction: column;
     gap: 1.5em;
@@ -84,4 +90,20 @@ main ul>li{
 main ul>li:hover{
     transform: scale(1.1);
     background-color: #093758;
+}
+
+main ul>li.un-hover:hover{
+    transform: scale(1);
+}
+
+.right-answer{
+    background-color: green !important;
+}
+
+.wrong-answer{
+    background-color: red !important;
+}
+
+.enlarge1-1{
+    transform: scale(1.1);
 }
