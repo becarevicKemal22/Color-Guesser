@@ -14,7 +14,6 @@ let score = 0;
 let highScore = localStorage.getItem("color_guesser_high_score") ?? 0;
 highScoreElement.textContent = `Highscore: ${highScore}`;
 
-
 const generateNewColor = () => {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
@@ -60,7 +59,10 @@ const highScoreHandler = () => {
     if (score > highScore) {
         highScore = score;
         localStorage.setItem("color_guesser_high_score", highScore);
-        console.log('New Highscore: ' + toString(localStorage.getItem('color_guesser_high_score')));
+        console.log(
+            "New Highscore: " +
+                toString(localStorage.getItem("color_guesser_high_score"))
+        );
     }
 };
 
