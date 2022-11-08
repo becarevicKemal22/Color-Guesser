@@ -79,6 +79,12 @@ const toggleButtonHiglights = () => {
     }
 };
 
+const toggleButtonClick = () => {
+    buttons.forEach((button, idx, buttons) => {
+        button.classList.toggle('no-click');
+    })
+}
+
 const buttonSelectionHandler = (index) => {
     clickedButtonIndex = index;
     let targetTimeout = null;
@@ -93,6 +99,7 @@ const buttonSelectionHandler = (index) => {
         targetTimeout = 1500;
     }
     toggleButtonHiglights();
+    toggleButtonClick();
     updateScoreElements();
     setTimeout(setRound, targetTimeout);
 };
@@ -119,6 +126,7 @@ const setGameUp = () => {
 
 const setRound = () => {
     hideOverlays();
+    toggleButtonClick();
     toggleButtonHiglights();
     applyColors();
 };
