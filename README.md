@@ -24,6 +24,7 @@ A working demo is hosted on: https://becarevickemal22.github.io/Color-Guesser/
 ## Current Features
 * Random color generation
 * Score system
+* Highscore on local storage.
 ## Ideas for additional features
-* Highscore system on local storage or a database.
-* System where the player loses lives before it is game over.
+* Player has lives that go down after wrong guesses.
+* Time limit for each guess.
